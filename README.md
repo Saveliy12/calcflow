@@ -18,11 +18,11 @@ CalcFlow - это приложение для обработки арифмет�
 
 **Пример 1: Добавление вычисления с новым уникальным идентификатором (Возврат taskID)**
 
-`curl -X POST -H "Content-Type: application/json" -d '{"id": "unique_request_id_1", "expression": "2 + 2"}' http://localhost:8080/add-calculation` 
+`curl -X POST -H "Content-Type: application/json" -d '{"id": "$(uuidgen)", "expression": "2 + 2"}' http://localhost:8080/add-calculation` 
 
 **Пример 2: Добавление вычисления с существующим идентификатором (возврат HTTP 200)**
 
-`curl -X POST -H "Content-Type: application/json" -d '{"id": "unique_request_id_2", "expression": "3 * 4"}' http://localhost:8080/add-calculation`
+`curl -X POST -H "Content-Type: application/json" -d '{"id": "unique_request_id", "expression": "3 * 4"}' http://localhost:8080/add-calculation`
 
 
 ### 2. Получение списка выражений со статусами
@@ -48,7 +48,7 @@ CalcFlow - это приложение для обработки арифмет�
 
 **Пример curl-запроса**:
   
-`curl http://localhost:8080/get-expression?requestID=unique_request_id_1`
+`curl http://localhost:8080/get-expression?requestID=unique_request_id`
 
 
 ### 4. Получение списка доступных операций со временем их выполнения
@@ -72,4 +72,4 @@ CalcFlow - это приложение для обработки арифмет�
 
 **Пример curl-запроса**:
 
-`curl -X POST -H "Content-Type: application/json" -d '{"Summation": 10, "Subtraction": 15, "Multiplication": 20, "Division": 25}' http://localhost:8080/update-operations`
+`curl -X POST -H "Content-Type: application/json" -d '{"Summation": 10s, "Subtraction": 15s, "Multiplication": 20s, "Division": 25s}' http://localhost:8080/update-operations`
